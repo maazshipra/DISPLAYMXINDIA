@@ -1,0 +1,613 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+
+<style>
+    #preloader {
+        position: fixed;
+        z-index: 99999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #preloader img {
+        max-width: 100%;
+        max-height: 100%;
+
+
+    }
+
+    #preloader.hide {
+        display: none;
+    }
+
+    @media screen and (max-width: 767px) {
+        .desktop-image {
+            display: none !important;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .bg-letter img:nth-of-type(1) {
+            display: none !important;
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        /* Reduce font size for headings and paragraph */
+        .slider-item h1,
+        .slider-item h3,
+        .slider-item p {
+            font-size: 24px;
+        }
+
+        /* Reduce image size */
+        .slider-item .bg-letter img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<!-- preloader start -->
+<!-- <div id="preloader">
+        <img src="{% static 'base/images/gifs/WHITE BACKGROUND.gif' %}" alt="Loading...">
+      </div> -->
+
+<!-- main wrapper -->
+
+<!-- {% include 'messages.html' %} -->
+
+
+<div class="main-wrapper">
+
+    <section class="section bg-gray hero-area slider_section" >
+        <div class="container">
+            <div class="hero-slider">
+
+                <!-- Start first slide  -->
+                <div class="slider-item">
+                    <div class="row hero_slider_containter">
+                        <div class="col-lg-6 align-self-center text-center text-md-left mb-4 mb-lg-0">
+                           <div class="slider_container_text"> <h4 data-duration-in=".5" data-animation-in="fadeInLeft" data-delay-in="0"
+                                data-animation-out="fadeOutLeft" data-delay-out="5" data-duration-out=".3">For Watches
+                            </h4>
+                            <!-- Start Title -->
+                            <h1 data-duration-in=".5" data-animation-in="fadeInLeft" data-delay-in=".2"
+                                data-animation-out="fadeOutLeft" data-delay-out="5" data-duration-out=".3">Watch Display
+                                Kits</h1>
+                            </div>
+                            <!-- end title -->
+                            <!-- Start Subtitle -->
+                            <!-- <h3 class="mb-4" data-duration-in=".5" data-animation-in="fadeInLeft" data-delay-in=".4" data-animation-out="fadeOutLeft" data-delay-out="5" data-duration-out=".3">for only $59.00</h3> -->
+                            <!-- end subtitle -->
+                            <!-- Start description -->
+                            <p class="mb-4 .d-none" data-duration-in=".5" data-animation-in="fadeInLeft" data-delay-in=".6"
+                                data-animation-out="fadeOutLeft" data-delay-out="5" data-duration-out=".3">Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua.</p>
+                            <!-- end description -->
+                            <!-- Start button -->
+                            <a href="{% url 'shop' %}" class="btn btn-primary slider_button" data-duration-in=".5"
+                                data-animation-in="fadeInLeft" data-delay-in=".8" data-animation-out="fadeOutLeft"
+                                data-delay-out="5" data-duration-out=".3">Explore now</a>
+                            <!-- end button -->
+                        </div>
+                        <!-- Start slide image -->
+                        <div class="col-lg-6 text-center text-md-center">
+                            <!-- background letter -->
+                            <div class="bg-letter">
+                                <!-- background letter -->
+                                <!-- <span data-duration-in=".5" data-animation-in="fadeInRight" data-delay-in="1.2" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-out=".3">
+                B
+              </span> -->
+                                <!-- <img class="img-fluid d-unset"  src="{% static 'base/images/PRODUCT IMG/j_stand_3.png' %}" alt="converse" data-duration-in=".5" data-animation-in="fadeInRight" data-delay-in="1" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-out=".3">
+                                    <img class="img-fluid d-unset"  src="{% static 'base/images/PRODUCT IMG/j_stand_2.png' %}" alt="converse" data-duration-in=".5" data-animation-in="fadeInRight" data-delay-in="1" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-out=".3"> -->
+                                <img class="img-fluid d-unset desktop-image"
+                                    src="{% static 'base/images/PRODUCT IMG/6.png' %}" alt="converse">
+                                
+                                <img class="img-fluid d-unset mobile-image"
+                                    src="{% static 'base/images/PRODUCT IMG/6.png' %}" alt="converse">
+
+                            </div>
+                        </div>
+                        <!-- end slide image  -->
+                    </div>
+                </div>
+                <!-- end slider item -->
+
+
+                <!-- Start slide  -->
+                <div class="slider-item">
+                    <div class="row hero_slider_containter">
+                        <div class="col-lg-6 align-self-center text-center text-md-left mb-4 mb-lg-0">
+                            <div class="slider_container_text"><h4 data-duration-in=".5" data-animation-in="fadeInDown" data-delay-in="0"
+                                data-animation-out="fadeOutDown" data-delay-out="5.8" data-duration-out=".3">For
+                                Jewellery</h4>
+                            <h1 data-duration-in=".5" data-animation-in="fadeInDown" data-delay-in=".2"
+                                data-animation-out="fadeOutDown" data-delay-out="5.4" data-duration-out=".3">Premium
+                                Quality Jewellery Stand</h1></div>
+                            <!-- <h3 class="mb-4" data-duration-in=".5" data-animation-in="fadeInDown" data-delay-in=".4" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-out=".3">for only $37.00</h3> -->
+                            <p class="mb-4" data-duration-in=".5" data-animation-in="fadeInDown" data-delay-in=".6"
+                                data-animation-out="fadeOutDown" data-delay-out="4.6" data-duration-out=".3">Lorem ipsum
+                                dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua.</p>
+                            <a href="{% url 'shop' %}" class="btn btn-primary slider_button" data-duration-in=".5"
+                                data-animation-in="fadeInDown" data-delay-in=".8" data-animation-out="fadeOutDown"
+                                data-delay-out="4.2" data-duration-out=".3">Explore now</a>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <div class="bg-letter">
+                                <!-- background letter -->
+                                <!-- <span data-duration-in=".5" data-animation-in="fadeInRight" data-delay-in="1.2" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-out=".3">
+                B
+              </span> -->
+                                <!-- <img class="img-fluid d-unset"  src="{% static 'base/images/PRODUCT IMG/j_stand_3.png' %}" alt="converse" data-duration-in=".5" data-animation-in="fadeInRight" data-delay-in="1" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-out=".3">
+                                    <img class="img-fluid d-unset"  src="{% static 'base/images/PRODUCT IMG/j_stand_2.png' %}" alt="converse" data-duration-in=".5" data-animation-in="fadeInRight" data-delay-in="1" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-out=".3"> -->
+                                <img class="img-fluid d-unset desktop-image"
+                                    src="{% static 'base/images/PRODUCT IMG/j_stand_3.png' %}" alt="converse">
+                                <img class="img-fluid d-unset desktop-image"
+                                    src="{% static 'base/images/PRODUCT IMG/j_stand_2.png' %}" alt="converse">
+                                <img class="img-fluid d-unset mobile-image"
+                                    src="{% static 'base/images/PRODUCT IMG/j_stand_3.png' %}" alt="converse">
+                                    <!-- <img class="img-fluid d-unset mobile-image"
+                                    src="{% static 'base/images/PRODUCT IMG/j_stand_2.png' %}" alt="converse"> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end slide  -->
+
+            </div>
+        </div>
+    </section>
+    <!-- hero area  -->
+
+
+
+    <!-- categories -->
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 mb-4 text-center">
+                    <h2 class="section-title">Top Categories</h2>
+                </div>
+                <!-- categories item -->
+                <div class="col-lg-4 col-md-6 mb-50">
+                    <div class="cat_card_cust p-0">
+                        <div class="border-bottom text-center hover-zoom-img"
+                            style="overflow: visible; padding-bottom: 10px;">
+                            <a href="/home/shop?category=Watch%20Display"><img
+                                    src="{% static 'base/images/categories/cat1.png' %}"
+                                    class="rounded-top img-fluid w-100" alt="product-img"></a>
+                        </div>
+
+                        <div class="px-4 py-3 border-top">
+                            <center>
+                                <h4 class="d-inline-block mb-0 mt-1">Watch Display</h4>
+                            </center>
+                            <!-- <a href="shop.html" class="btn btn-sm btn-outline-primary float-right">view more</a> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- categories item -->
+                <div class="col-lg-4 col-md-6 mb-50">
+                    <div class="cat_card_cust p-0">
+                        <div class="border-bottom text-center hover-zoom-img"
+                            style="overflow: visible; padding-bottom: 10px;">
+                            <a href="/home/shop?category=Optic%20Display"><img
+                                    src="{% static 'base/images/categories/cat2.png' %}"
+                                    class="rounded-top img-fluid w-100" alt="product-img"></a>
+                        </div>
+
+                        <div class="px-4 py-3 border-top">
+                            <center>
+                                <h4 class="d-inline-block mb-0 mt-1">Optic Display</h4>
+                            </center>
+                            <!-- <a href="shop.html" class="btn btn-sm btn-outline-primary float-right">view more</a> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- categories item -->
+                <div class="col-lg-4 col-md-6 mb-50">
+                    <div class="cat_card_cust p-0">
+                        <div class="border-bottom text-center hover-zoom-img"
+                            style="overflow: visible; padding-bottom: 10px;">
+                            <a href="/home/shop?category=Jewellery%20Display"><img
+                                    src="{% static 'base/images/categories/cat3.png' %}"
+                                    class="rounded-top img-fluid w-100" alt="product-img"></a>
+                        </div>
+
+                        <div class="px-4 py-3 border-top">
+                            <center>
+                                <h4 class="d-inline-block mb-0 mt-1">Jewellery Display</h4>
+                            </center>
+                            <!-- <a href="shop.html" class="btn btn-sm btn-outline-primary float-right">view more</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /categories -->
+
+    <section class="section overlay cta" data-background="{% static 'base/images/backgrounds/factory2.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="text-white mb-2">Visit Our Workshop</h1>
+                    <h4 class="text-white mb-4">To visit our workshop please call 999999999 to arrange an appointment,
+                        or use the form below.</h4>
+                    <a href="{% url 'contact' %}" class="btn btn-light">contact now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div id="quickView" class="quickview">
+            <div class="row w-100">
+                <div class="col-lg-6 col-md-6 mb-5 mb-md-0 pl-5 pt-4 pt-lg-0 pl-lg-0">
+                    <img src="{% static 'base/images/feature/product.png' %}" alt="product-img" class="img-fluid">
+                </div>
+                <div class="col-lg-5 col-md-6 text-center text-md-left align-self-center pl-5">
+                    <h3 class="mb-lg-2 mb-2">Woven Crop Cami</h3>
+                    <span class="mb-lg-4 mb-3 h5">$90.00</span>
+                    <p class="mb-lg-4 mb-3 text-gray">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. sed ut perspic atis unde omnis iste natus</p>
+                    <form action="#">
+                        <select class="form-control w-100 mb-2" name="color">
+          <option value="brown">Brown Color</option>
+          <option value="gray">Gray Color</option>
+          <option value="black">Black Color</option>
+        </select>
+                        <select class="form-control w-100 mb-3" name="size">
+          <option value="small">Small Size</option>
+          <option value="medium">Medium Size</option>
+          <option value="large">Large Size</option>
+        </select>
+                        <button class="btn btn-primary w-100 mb-lg-4 mb-3">add to cart</button>
+                    </form>
+                    <ul class="list-inline social-icon-alt">
+                        <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ti-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+
+
+
+
+
+    <!-- collection -->
+    <!-- <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="section-title">Top Collections</h2>
+                    </div>
+                    <div class="col-12">
+                        <div class="collection-slider" style="">
+                            <!-- product -->
+
+    <!-- {% for product in top_collection %}                              -->
+
+    <!-- <div class="col-lg-4 col-sm-6 " style="margin-top: 10px; margin-bottom: 10px;">
+                                <div class="product text-center" style="box-shadow: 0 2px 3px 0 #01AEBB; border-radius: 15px;" >
+                                    <div class="product-thumb">
+                                        <div class="overflow-hidden position-relative" style="padding: 10px 10px 0px 10px;">
+                                            <a href="{% url 'prod_detail' product.id %}">
+                                                <div class="images" style="height: 325px; width:auto; object-fit: contain; box-shadow: 0px 1px 4px 0px #01AEBB;
+                                                border-radius: 15px;">
+                      <img class="img-fluid  mb-3 img-first" style="" src="{{product.image.url}}" alt="product-img" >
+                      <h3 class="h5"><a class="text-color"  href="product-single.html">{{product.title}}</a></h3></div> -->
+    <!-- <img class="img-fluid  mb-3 img-second" src="{{product.image.url}}" alt="product-img"> -->
+    <!-- </a>
+                                            <div class="btn-cart">
+                                                <a href="{% url 'prod_detail' product.id %}" class="btn btn-primary btn-sm">Explore More</a>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="product-hover-overlay">
+                                            <a href="#" class="product-icon favorite" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+                        class="ti-heart"></i></a>
+                                            <a href="#" class="product-icon cart" data-toggle="tooltip" data-placement="left" title="Compare"><i
+                        class="ti-direction-alt"></i></a>
+                                            <a data-vbtype="inline" href="#quickView-{{product.id}}" class="product-icon view venobox" data-toggle="tooltip" data-placement="left" title="Quick View"><i class="ti-search"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-info" style="padding-bottom: 10px; padding-top: 10px;">
+                                        <h3 class="h5"><a class="text-color"  href="product-single.html">{{product.title}}</a></h3> -->
+    <!-- <span class="h5">$320.79</span> -->
+    <!-- </div>
+                                </div>
+                            </div> -->
+    <!-- {% endfor %} -->
+    <!-- //end of product -->
+
+    <!-- </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-title">Top Collections</h2>
+                </div>
+                <div class="col-12">
+                    <div class="collection-slider">
+                        {% for product in top_collection %}
+                        <!-- product -->
+                        <div class="col-lg-4 col-sm-6">
+                            <!-- <div class="product text-center">
+                                    <div class="product-thumb">
+                                        <div class="overflow-hidden position-relative"> -->
+                            <div class="card_cust" style="margin: 30px auto;">
+                                <img src="{{product.image.url}}" alt="" />
+                                <div>
+                                    <h2
+                                        style="    overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;line-clamp: 1;-webkit-box-orient: vertical;">
+                                        {{product.title}}</h2>
+                                    <!-- <h3>Category: Watch Display</h3> -->
+                                    <!-- <p>
+                                Soon you can invest in Sid Harman's new attractive property, set in
+                                the heart of Athens.
+                              </p> -->
+                                    <div style="display: flex; justify-content: space-between; min-width: 200px; padding-left: 5px;
+                                    padding-right: 5px;">
+                                        <div class="quickview_btn">
+                                            <div class="tooltip_cust"><a data-vbtype="inline"
+                                                    href="#quickView-{{product.id}}" class="venobox">
+                                                    <i class="fa-solid fa-eye fa-lg eye-hover"></i>
+                                                </a>
+                                                <span class="tooltiptext_cust">Quick view</span>
+                                            </div>
+
+
+                                        </div>
+
+                                        <a href="{% url 'prod_detail' product.id %}"> <button> <span>Know
+                                                    More</span></button> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div>
+                        </div>
+                        </div> -->
+                        {% endfor %}
+                        <!-- //end of product -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /collection -->
+
+
+
+
+    <!-- deal -->
+    <section class="section bg-cover" style="padding-top:50px; padding-bottom:50px"
+        data-background="{% static 'base/images/backgrounds/deal.jpg' %}">
+        <div class="container">
+            <div class="row flex-column-reverse flex-lg-row">
+                <div class="col-md-6 text-center text-md-left mb-4 mb-md-0 align-self-center">
+                    <h1>Product of the Month</h1>
+                    <h4 class="mb-40">Explore more about the product</h4>
+                    <!-- syo-timer -->
+                    <!-- <div class="syotimer large">
+                            <div id="simple-timer" data-year="2019" data-month="12" data-day="1" data-hour="1"></div>
+                        </div> -->
+                    <a href="prod_detail/1" class="btn btn-primary">shop now</a>
+                </div>
+                <div class="col-md-6 text-center text-md-center align-self-center">
+                    <img src="{% static 'base/images/PRODUCT IMG/1.png' %}" alt="product-img" style="width: 400px;"
+                        class="img-fluid up-down">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /deal -->
+
+    <!-- instagram -->
+
+    <!-- /instagram -->
+
+    <!-- service -->
+    <section class="section-sm border-top">
+        <div class="container">
+            <div class="row">
+                <!-- service item -->
+                <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+                    <div class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
+                        <i class="ti-truck icon-lg mr-4 mb-3 mb-sm-0"></i>
+                        <div class="text-center text-sm-left">
+                            <h4>Free Shipping</h4>
+                            <p class="mb-0 text-gray">Free shipping on oder over $70</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- service item -->
+                <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+                    <div class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
+                        <i class="ti-shield icon-lg mr-4 mb-3 mb-sm-0"></i>
+                        <div class="text-center text-sm-left">
+                            <h4>Secure Payment</h4>
+                            <p class="mb-0 text-gray">We ensure secure payment with PEV</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- service item -->
+                <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+                    <div class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
+                        <i class="ti-timer icon-lg mr-4 mb-3 mb-sm-0"></i>
+                        <div class="text-center text-sm-left">
+                            <h4>Support 24/7</h4>
+                            <p class="mb-0 text-gray">Contact us 24 hours a day, 7 days a week</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- service item -->
+                <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+                    <div class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
+                        <i class="ti-reload icon-lg mr-4 mb-3 mb-sm-0"></i>
+                        <div class="text-center text-sm-left">
+                            <h4>30 Days Return</h4>
+                            <p class="mb-0 text-gray">Simply return it within 30 days for an exchange.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /service -->
+
+    <!-- newsletter -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-title">Our Newsletter</h2>
+                    <p class="mb-4">Subscribe to our Newsletter to receive early discount offers</p>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-9 col-10 mx-auto">
+                    <form action="{% url 'home' %}" method="post" class="d-flex flex-column flex-sm-row" autocomplete="off">
+                        {% csrf_token %}
+                        {{form.email}}
+
+                        <button type="submit" value="send" class="btn btn-primary">Subscribe</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /newsletter -->
+
+    <!-- Newsletter Modal -->
+
+
+
+    <div class="modal fade subscription-modal" id="subscriptionModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <!-- modal content start -->
+            <div class="modal-content">
+                <!-- container start -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- close button -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="col-lg-6 px-0">
+                            <!-- newsletter image -->
+                            <div class="image"><img src="{% static 'base/images/popup.png' %}" alt="products"
+                                    class="img-fluid w-100 rounded-left border"></div>
+                        </div>
+                        <div class="col-lg-6 align-self-center p-5">
+                            <!-- Content start -->
+                            <div class="text-center align-self-center">
+                                <h3 class="mb-lg-5 mb-4">Welcome to <br> Display Max India</h3>
+                                <h4>Get in Touch</h4>
+                                <h2 class="mb-lg-5 mb-4">Send your email we will contact you</h2>
+                                <!-- newsletter form -->
+
+                                <div class="form">
+                                    <form class="form" id="a-form" method="post" action="#"
+                                        enctype="multipart/form-data">
+                                        <!-- {% csrf_token %}
+                                            {{form.email}} -->
+                                        <input type="email" class="form-control mb-3" name="email" id="email"
+                                            placeholder="Email Address">
+                                        <button class="btn btn-primary w-100" type="submit">Join Us</button>
+                                        <!-- <input type="submit" value="Submit"> -->
+                                    </form>
+
+
+
+                                </div>
+                            </div>
+                            <!-- Content end -->
+                        </div>
+                    </div>
+                </div>
+                <!-- container end -->
+            </div>
+            <!-- modal content end -->
+        </div>
+    </div>
+    <!-- /Newsletter Modal -->
+
+
+
+
+</div>
+<!-- /main wrapper -->
+
+
+{% endblock %}
+
+
+
+
+{% block javascript %}
+<script>
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            document.querySelector('#preloader').classList.add('hide');
+        }, 4000); // 3 seconds
+    });
+</script>
+
+<script>
+    $(window).on('load', function () {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 4,
+                    nav: true,
+                    loop: false
+                }
+            }
+        });
+    });
+
+</script>
+
+{% endblock %}

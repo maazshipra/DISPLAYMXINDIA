@@ -1,0 +1,451 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'base/plugins/slick/slick.css' %}">
+
+<style>
+
+   
+
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+
+<!-- main wrapper -->
+<div class="main-wrapper">
+
+    <!-- breadcrumb -->
+    <nav class="bg-gray py-3">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Product Single</li>
+            </ol>
+        </div>
+    </nav>
+    <!-- /breadcrumb -->
+    <!-- {% include 'messages.html' %} -->
+
+    <!-- <div id="quickView" class="quickview">
+        <div class="row w-100">
+            <div class="col-lg-6 col-md-6 mb-5 mb-md-0 pl-5 pt-4 pt-lg-0 pl-lg-0">
+                <img src="images/feature/product.png" alt="product-img" class="img-fluid">
+            </div>
+            <div class="col-lg-5 col-md-6 text-center text-md-left align-self-center pl-5">
+                <h3 class="mb-lg-2 mb-2">Woven Crop Cami</h3>
+                <span class="mb-lg-4 mb-3 h5">$90.00</span>
+                <p class="mb-lg-4 mb-3 text-gray">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. sed ut perspic atis unde omnis iste natus</p>
+                <form action="#">
+                    <select class="form-control w-100 mb-2" name="color">
+      <option value="brown">Brown Color</option>
+      <option value="gray">Gray Color</option>
+      <option value="black">Black Color</option>
+    </select>
+                    <select class="form-control w-100 mb-3" name="size">
+      <option value="small">Small Size</option>
+      <option value="medium">Medium Size</option>
+      <option value="large">Large Size</option>
+    </select>
+                    <button class="btn btn-primary w-100 mb-lg-4 mb-3">add to cart</button>
+                </form>
+                <ul class="list-inline social-icon-alt">
+                    <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="ti-google"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
+
+
+
+    <!-- product-single -->
+    {% for product in prod_id %}
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <!-- product image slider -->
+                    <div class="product-slider">
+
+                        <div data-image="{{product.image.url}}">
+                            <img class="img-fluid image-zoom" style="height: 500px; width:auto;"
+                                src="{{product.image.url}}" alt="product-img" data-zoom="{{product.image.url}}">
+                        </div>
+                        
+                        {% if product.productimage_set.count == 0 %}
+
+                        <div data-image="{{product.image.url}}" style="height: 150px; ">
+                            <img class="img-fluid image-zoom" 
+                                src="{{product.image.url}}" alt="product-img" data-zoom="{{product.image.url}}">
+                        </div>
+                            
+                            
+                        
+                        {% else %}
+                        {% for pi in product.productimage_set.all %}
+                        <div data-image="{{pi.image.url}}">
+                            <img class="img-fluid w-100 image-zoom" src="{{pi.image.url}}" alt="product-img"
+                                data-zoom="{{pi.image.url}}">
+                        </div>
+                        
+                        {% endfor %}
+                        {% endif %}
+                        <!-- <div data-image="{{product.image.url}}">
+                            <img class="img-fluid w-100 image-zoom" src="{{product.image.url}}" alt="product-img" data-zoom="{{product.image.url}}">
+                        </div> -->
+                    </div>
+                </div>
+
+
+                <!-- produt details -->
+                <div class="col-lg-6 mb-100">
+                    <h2>{{product.title}}</h2>
+                    <!-- <i class="ti-check-box text-success"></i> -->
+                    <!-- <span class="text-success">Instock</span> -->
+                    <ul class="list-inline mb-4">
+
+                        <li class="list-inline-item"> <span class="text-gray ml-0"> Category : </span> <a
+                                href="{% url 'shop' %}?category={{product.category}}" class="text-gray ml-0"
+                                style="color: rgba(0, 0, 0, 0.833);"> {{product.category}} </a> </li>
+                    </ul>
+                    <!-- <h4 class="text-primary h3">$65.00 <s class="text-color ml-2">$90.00</s></h4> -->
+                    <!-- <h6 class="mb-4">You save: <span class="text-primary">$25.00 USD (30%)</span></h6> -->
+                    <!-- <div class="d-flex flex-column flex-sm-row justify-content-between mb-3">
+                        <input id="quantity" class="quantity mr-sm-2 mb-3 mb-sm-0" type="text" value="" name="quantity">
+                        <select class="form-control mx-sm-2 mb-3 mb-sm-0" name="color">
+        <option value="brown">Brown Color</option>
+        <option value="gray">Gray Color</option>
+        <option value="black">Black Color</option>
+      </select>
+
+                        <select class="form-control ml-sm-2 mb-3 mb-sm-0" name="size">
+        <option class="form-control" value="small">Small Size</option>
+        <option value="medium">Medium Size</option>
+        <option value="large">Large Size</option>
+      </select>
+                    </div> -->
+
+                    <form action="{% url 'prod_detail' product.id %}" method="post">
+                        <div class="form-group">
+
+
+
+                            {% csrf_token %}
+
+                            <!-- {{form}} -->
+
+                            <!-- <div class="form-control mb3">  </div> -->
+                            {{form.Product}}
+                            {{form.name}}{{form.mobile_number}}{{form.email}}{{form.location}}{{form.requirment}}
+                            <!-- <div class="form-control mb-3"></div>
+<div class="form-control mb-3"></div>
+<div class="form-control mb-3"></div>
+<div class="form-control mb-3"></div> -->
+                            <!-- <input type="text" class="form-control mb-3 " name="name" id="" placeholder="Name*"   value="" required>
+        <input type="text"  class="form-control mb-3" name="mob_no" id="" placeholder="Mobile Number*"   value="" required>
+        <input type="text" class="form-control mb-3" name="email" id="" placeholder="E-mail Id*"   value="" required>
+        <input type="text" class="form-control mb-3" name="location" id="" placeholder="Location*"   value="" required>
+        <input type="text" class="form-control mb-3" name="requirment" id="" placeholder="Requirement"  value="" > -->
+                            <input type="submit" value="ENQUIRE NOW" class="btn btn-primary mb-4">
+                        </div>
+                    </form>
+                    <!-- </div> -->
+
+                    <!-- <h4 class="mb-3"><span class="text-primary">Harry up!</span> Sale ends in</h4> -->
+                    <!-- syo-timer -->
+                    <!-- <div class="syotimer dark">
+                        <div id="sale-timer" data-year="2019" data-month="5" data-day="1" data-hour="1"></div>
+                    </div> -->
+                    <hr>
+                    <!-- <div class="payment-option border border-primary mt-5 mb-4">
+                        <h5 class="bg-white">Guaranted Safe Checkout</h5>
+                        <img class="img-fluid w-100 p-3" src="{% static 'base/images/payment-card/all-card.png' %}" alt="payment-card">
+                    </div> -->
+                    <h5 class="mb-3">4 Great Reason to Buy From Us</h5>
+                    <div class="row">
+                        <!-- service item -->
+                        <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+                            <div class="d-flex">
+                                <i class="ti-truck icon-md mr-3"></i>
+                                <div class="align-items-center">
+                                    <h6>Free Shipping</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- service item -->
+                        <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+                            <div class="d-flex">
+                                <i class="ti-shield icon-md mr-3"></i>
+                                <div class="align-items-center">
+                                    <h6>Secure Payment</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- service item -->
+                        <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+                            <div class="d-flex">
+                                <i class="ti-money icon-md mr-3"></i>
+                                <div class="align-items-center">
+                                    <h6>Lowest Price</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- service item -->
+                        <div class="col-lg-3 col-6 mb-4 mb-lg-0">
+                            <div class="d-flex">
+                                <i class="ti-reload icon-md mr-3"></i>
+                                <div class="align-items-center">
+                                    <h6>30 Days Return</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <h3 class="mb-3">Product Description</h3>
+                    <p class="text-gray mb-4">{{product.desc}}</p>
+                    <h4>Product Features</h4>
+                    <ul class="features-list">
+                        <li>Mapped with 3M™ Thinsulate™ Insulation [40G Body / Sleeves / Hood]</li>
+                        <li>Embossed Taffeta Lining</li>
+                        <li>DRYRIDE Durashell™ 2-Layer Oxford Fabric [10,000MM, 5,000G]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+    <!-- /product-single -->
+
+
+    <!-- testimonial -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="mb-4">What Our Customers Think?</h3>
+                </div>
+                <!-- testimonial-item -->
+                <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                    <div class="d-flex">
+                        <div>
+                            <img class="rounded-circle mr-4" src="{% static 'base/images/customer/customer-1.jpg' %}"
+                                alt="customer-img">
+                        </div>
+                        <div>
+                            <ul class="list-inline">
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                            </ul>
+                            <h4 class="text-dark">Best quality for the price</h4>
+                            <p class="text-gray">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremqe laudant tota rem ape riamipsa eaque.</p>
+                            <h5 class="customer-name text-dark">Maggie Scott</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- testimonial-item -->
+                <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                    <div class="d-flex">
+                        <div>
+                            <img class="rounded-circle mr-4" src="{% static 'base/images/customer/customer-2.jpg' %}"
+                                alt="customer-img">
+                        </div>
+                        <div>
+                            <ul class="list-inline">
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                            </ul>
+                            <h4 class="text-dark">Best quality for the price</h4>
+                            <p class="text-gray">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremqe laudant tota rem ape riamipsa eaque.</p>
+                            <h5 class="customer-name text-dark">Maggie Scott</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- testimonial-item -->
+                <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                    <div class="d-flex">
+                        <div>
+                            <img class="rounded-circle mr-4" src="{% static 'base/images/customer/customer-3.jpg' %}"
+                                alt="customer-img">
+                        </div>
+                        <div>
+                            <ul class="list-inline">
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                                <li class="list-inline-item mx-0"><a href="#" class="rated"><i class="ti-star"></i></a>
+                                </li>
+                            </ul>
+                            <h4 class="text-dark">Best quality for the price</h4>
+                            <p class="text-gray">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                accusantium doloremqe laudant tota rem ape riamipsa eaque.</p>
+                            <h5 class="customer-name text-dark">Maggie Scott</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /testimonial -->
+<section style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
+    <div style="display: flex; flex-direction: column;align-items: baseline;padding-top: 50px;">
+                <div class="col-lg-12">
+                    <h2 class="mb-4">Related Products</h2>
+                </div>
+    <div class="crad-container" style="display: flex;margin: auto;justify-content: center ;flex-wrap: wrap;">
+
+        {% for product in related_prod %}
+
+        <div class="card_cust">
+            <img src="{{product.image.url}}" alt="" />
+            <div>
+                <h2
+                    style="    overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;line-clamp: 1;-webkit-box-orient: vertical;">
+                    {{product.title}}</h2>
+                <!-- <h3>Category: Watch Display</h3> -->
+                <!-- <p>
+            Soon you can invest in Sid Harman's new attractive property, set in
+            the heart of Athens.
+          </p> -->
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="quickview_btn">
+                        <div class="tooltip_cust"><a data-vbtype="inline" href="#quickView-{{product.id}}"
+                                class="venobox">
+                                <i class="fa-solid fa-eye fa-lg eye-hover"></i>
+                            </a>
+                            <span class="tooltiptext_cust">Quick view</span>
+                        </div>
+
+
+                    </div>
+
+                    <a href="{% url 'prod_detail' product.id %}"> <button> <span>Know More</span></button> </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</section>
+
+    <!-- related products -->
+    <!-- <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="mb-4">Related Products</h2> -->
+                <!-- </div> -->
+                <!-- product -->
+                <!-- {% for product in related_prod %}
+
+                <div class="card_cust">
+                    <img src="{{product.image.url}}" alt="" />
+                    <div>
+                        <h2>{{product.title}}</h2> -->
+                        <!-- <h3>Category: Watch Display</h3> -->
+                        <!-- <p>
+                        Soon you can invest in Sid Harman's new attractive property, set in
+                        the heart of Athens.
+                      </p> -->
+                        <!-- <a href="{% url 'prod_detail' product.id %}"> <button>Know More</button> </a>
+                    </div>
+                </div> -->
+
+
+
+
+
+                <!-- 
+                <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0">
+                    <div class="product text-center" style="box-shadow: 0 2px 3px 0 #01AEBB; border-radius: 15px;">
+                        <div class="product-thumb">
+                            <div class="overflow-hidden position-relative" style="padding: 10px 10px 0px 10px;">
+                                <a href="{% url 'prod_detail' product.id %}">
+            <img class="img-fluid w-100 mb-3 img-first" src="{{product.image.url}}" alt="product-img" style="    box-shadow: 0px 1px 4px 0px #01AEBB;
+            border-radius: 15px;"> -->
+                <!-- <img class="img-fluid w-100 mb-3 img-second" src="images/collection/product-5.jpg" alt="product-img"> -->
+                <!-- </a>
+                                <div class="btn-cart">
+                                    <a href="{% url 'prod_detail' product.id %}" class="btn btn-primary btn-sm">Explore More</a>
+                                </div>
+                            </div>
+                            <div class="product-hover-overlay">
+                                <a href="#" class="product-icon favorite" data-toggle="tooltip" data-placement="left" title="Wishlist"><i
+              class="ti-heart"></i></a>
+                                <a href="#" class="product-icon cart" data-toggle="tooltip" data-placement="left" title="Compare"><i
+              class="ti-direction-alt"></i></a>
+                                <a data-vbtype="inline" href="#quickView-{{product.id}}" class="product-icon view venobox" data-toggle="tooltip" data-placement="left" title="Quick View"><i class="ti-search"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="h5" style="padding-bottom: 10px;padding-top: 10px;"><a class="text-color" href="{% url 'prod_detail' product.id %}">{{product.title}}</a></h3> -->
+                <!-- <span class="h5">$520.79</span> -->
+                <!-- </div> -->
+                <!-- product label badge -->
+                <!-- <div class="product-label new">
+                            new
+                        </div> -->
+                <!-- </div>
+                </div> -->
+                <!-- {% endfor %} -->
+                <!-- //end of product -->
+            <!-- </div>
+        </div>
+</div>
+</section> -->
+<!-- /related products -->
+</div>
+<!-- /main wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block javascript %}
+<script src="{% static 'base/plugins/slick/slick.min.js' %}"></script>
+
+{% endblock %}
